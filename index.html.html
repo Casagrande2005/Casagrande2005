@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa Grande | Residencia Geriátrica</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --verde-oscuro: #2D4A3E;
+    --verde-medio: #4A7B6A;
+    --verde-claro: #8FB5A8;
+    --crema: #F7F3EE;
+    --crema-oscuro: #EDE6DC;
+    --dorado: #C4A96A;
+    --texto: #2C2C2A;
+    --texto-suave: #6B6860;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--crema);
+    color: var(--texto);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(247, 243, 238, 0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(196, 169, 106, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 4rem;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--verde-oscuro);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+
+  .nav-logo span {
+    color: var(--dorado);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--texto-suave);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--verde-oscuro); }
+
+  .nav-cta {
+    background: var(--verde-oscuro);
+    color: var(--crema) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+  }
+
+  .nav-cta:hover { background: var(--verde-medio); color: var(--crema) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-left {
+    background: var(--verde-oscuro);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 5rem 6rem 6rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .hero-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 500;
+    color: var(--crema);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-titulo em {
+    font-style: italic;
+    color: var(--dorado);
+  }
+
+  .hero-subtitulo {
+    font-size: 1rem;
+    color: rgba(247, 243, 238, 0.7);
+    max-width: 38ch;
+    margin-bottom: 3rem;
+    line-height: 1.75;
+  }
+
+  .hero-datos {
+    display: flex;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(196, 169, 106, 0.25);
+  }
+
+  .hero-dato-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    color: var(--dorado);
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .hero-dato-label {
+    font-size: 0.75rem;
+    color: rgba(247, 243, 238, 0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+
+  .hero-btn {
+    display: inline-block;
+    background: var(--dorado);
+    color: var(--verde-oscuro);
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: background 0.2s;
+    border-radius: 2px;
+    align-self: flex-start;
+  }
+
+  .hero-btn:hover { background: #d4b97a; }
+
+  .hero-right {
+    background: var(--crema-oscuro);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 5rem;
+    gap: 1.5rem;
+  }
+
+  .hero-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--verde-oscuro);
+    line-height: 1.5;
+    border-left: 3px solid var(--dorado);
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-quote-autor {
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+    letter-spacing: 0.04em;
+    padding-left: 1.5rem;
+  }
+
+  .hero-sedes {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .sede-card {
+    background: white;
+    border: 1px solid rgba(196, 169, 106, 0.2);
+    padding: 1.25rem 1.5rem;
+    border-radius: 4px;
+  }
+
+  .sede-nombre {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--dorado);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .sede-dir {
+    font-size: 0.95rem;
+    color: var(--texto);
+  }
+
+  /* SECCIONES */
+  section {
+    padding: 6rem 6rem;
+  }
+
+  .seccion-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .seccion-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 500;
+    color: var(--verde-oscuro);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  /* NOSOTROS */
+  .nosotros {
+    background: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .nosotros-texto p {
+    color: var(--texto-suave);
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+  }
+
+  .nosotros-firma {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--crema-oscuro);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--verde-oscuro);
+  }
+
+  .nosotros-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .valor-card {
+    background: var(--crema);
+    padding: 1.75rem 1.5rem;
+    border-radius: 4px;
+  }
+
+  .valor-card:first-child {
+    background: var(--verde-oscuro);
+    grid-column: 1 / -1;
+  }
+
+  .valor-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .valor-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--verde-oscuro);
+  }
+
+  .valor-card:first-child .valor-titulo {
+    color: var(--crema);
+  }
+
+  .valor-desc {
+    font-size: 0.88rem;
+    color: var(--texto-suave);
+    line-height: 1.65;
+  }
+
+  .valor-card:first-child .valor-desc {
+    color: rgba(247, 243, 238, 0.7);
+  }
+
+  /* SERVICIOS */
+  .servicios {
+    background: var(--crema);
+  }
+
+  .servicios-header {
+    max-width: 55ch;
+    margin-bottom: 4rem;
+  }
+
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .servicio-item {
+    background: white;
+    padding: 2rem 1.75rem;
+    border-radius: 4px;
+    border: 1px solid rgba(196, 169, 106, 0.15);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .servicio-item:hover {
+    border-color: var(--dorado);
+    transform: translateY(-2px);
+  }
+
+  .servicio-icono {
+    width: 44px;
+    height: 44px;
+    background: var(--crema-oscuro);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .servicio-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--verde-oscuro);
+    margin-bottom: 0.6rem;
+  }
+
+  .servicio-item p {
+    font-size: 0.88rem;
+    color: var(--texto-suave);
+    line-height: 1.65;
+  }
+
+  /* DESTACADOS */
+  .destacados {
+    background: var(--verde-oscuro);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 5rem 6rem;
+  }
+
+  .destacados .seccion-titulo {
+    color: var(--crema);
+  }
+
+  .destacados-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    margin-top: 3.5rem;
+    width: 100%;
+  }
+
+  .destacado-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: var(--dorado);
+    line-height: 1;
+  }
+
+  .destacado-label {
+    font-size: 0.85rem;
+    color: rgba(247, 243, 238, 0.6);
+    margin-top: 0.5rem;
+    line-height: 1.5;
+  }
+
+  /* CONTACTO */
+  .contacto {
+    background: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contacto-info p {
+    color: var(--texto-suave);
+    margin-bottom: 2rem;
+  }
+
+  .contacto-datos {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .contacto-dato {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem 1.5rem;
+    background: var(--crema);
+    border-radius: 4px;
+    border-left: 3px solid var(--dorado);
+  }
+
+  .contacto-dato-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--dorado);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+
+  .contacto-dato-valor {
+    font-size: 0.95rem;
+    color: var(--texto);
+  }
+
+  .contacto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-grupo label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--texto-suave);
+    font-weight: 500;
+  }
+
+  .form-grupo input,
+  .form-grupo textarea,
+  .form-grupo select {
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 3px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: var(--texto);
+    background: var(--crema);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-grupo input:focus,
+  .form-grupo textarea:focus,
+  .form-grupo select:focus {
+    border-color: var(--verde-medio);
+  }
+
+  .form-grupo textarea {
+    resize: vertical;
+    min-height: 130px;
+  }
+
+  .form-btn {
+    background: var(--verde-oscuro);
+    color: var(--crema);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 3px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+
+  .form-btn:hover { background: var(--verde-medio); }
+
+  /* FOOTER */
+  footer {
+    background: var(--texto);
+    color: rgba(247, 243, 238, 0.5);
+    padding: 3rem 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.82rem;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--crema);
+    font-weight: 600;
+  }
+
+  .footer-logo span { color: var(--dorado); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 4rem 1.5rem 3rem; }
+    .hero-titulo { font-size: 2.8rem; }
+    .hero-right { padding: 3rem 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .nosotros { grid-template-columns: 1fr; gap: 3rem; }
+    .servicios-grid { grid-template-columns: 1fr; }
+    .destacados-grid { grid-template-columns: repeat(2, 1fr); }
+    .contacto { grid-template-columns: 1fr; gap: 3rem; }
+    .nosotros-visual { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#inicio" class="nav-logo">Casa <span>Grande</span></a>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#contacto" class="nav-cta">Consultar</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Residencia Geriátrica · Exclusiva para mujeres</p>
+    <h1 class="hero-titulo">Un hogar donde <em>el cuidado</em> es la prioridad</h1>
+    <p class="hero-subtitulo">En Casa Grande brindamos atención médica profesional en un ambiente íntimo, cálido y familiar, pensado especialmente para que cada residente se sienta en casa.</p>
+    <div class="hero-datos">
+      <div>
+        <div class="hero-dato-num">+15</div>
+        <div class="hero-dato-label">años de experiencia</div>
+      </div>
+      <div>
+        <div class="hero-dato-num">2</div>
+        <div class="hero-dato-label">sedes en zona norte</div>
+      </div>
+      <div>
+        <div class="hero-dato-num">100%</div>
+        <div class="hero-dato-label">ocupación habitual</div>
+      </div>
+    </div>
+    <a href="#contacto" class="hero-btn">Consultar disponibilidad</a>
+  </div>
+
+  <div class="hero-right">
+    <blockquote class="hero-quote">
+      "Nuestra misión es que cada residente viva con dignidad, alegría y el mejor cuidado posible."
+    </blockquote>
+    <p class="hero-quote-autor">— Dirección médica de Casa Grande</p>
+
+    <div class="hero-sedes">
+      <div class="sede-card">
+        <div class="sede-nombre">Sede Martínez</div>
+        <div class="sede-dir">Fleming 2539, Martínez</div>
+      </div>
+      <div class="sede-card">
+        <div class="sede-nombre">Sede La Lucila</div>
+        <div class="sede-dir">Acassuso 989, La Lucila</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section class="nosotros" id="nosotros">
+  <div class="nosotros-texto">
+    <p class="seccion-eyebrow">Nuestra historia</p>
+    <h2 class="seccion-titulo">Una institución construida con dedicación</h2>
+    <p>Casa Grande nació de la convicción de que el cuidado de nuestros mayores merece el mismo estándar de excelencia que cualquier otro aspecto de la salud. Desde nuestros inicios, combinamos experiencia médica con calidez humana.</p>
+    <p>Somos una residencia exclusiva para mujeres, con un enfoque personalizado que nos permite conocer profundamente las necesidades, historia y preferencias de cada residente. Nuestra casi plena ocupación habla mejor que cualquier otra cosa de la confianza que las familias depositan en nosotros.</p>
+    <p>Contamos con dos sedes en la zona norte del Gran Buenos Aires, ambas diseñadas para ofrecer comodidad, seguridad y el ambiente de hogar que nuestras residentes merecen.</p>
+    <div class="nosotros-firma">
+      Verónica y el equipo de Casa Grande
+    </div>
+  </div>
+
+  <div class="nosotros-visual">
+    <div class="valor-card" style="grid-column: 1 / -1;">
+      <span class="valor-icon">🏡</span>
+      <div class="valor-titulo">Un hogar, no una institución</div>
+      <p class="valor-desc">Cada detalle de Casa Grande está pensado para que las residentes se sientan en un ambiente familiar, cálido y propio.</p>
+    </div>
+    <div class="valor-card">
+      <span class="valor-icon">👩‍⚕️</span>
+      <div class="valor-titulo">Atención médica continua</div>
+      <p class="valor-desc">Supervisión y cuidados profesionales las 24 horas del día.</p>
+    </div>
+    <div class="valor-card">
+      <span class="valor-icon">🌿</span>
+      <div class="valor-titulo">Espacio y naturaleza</div>
+      <p class="valor-desc">Jardín de 1.000 m² y pileta climatizada disponibles todo el año.</p>
+    </div>
+    <div class="valor-card">
+      <span class="valor-icon">⚡</span>
+      <div class="valor-titulo">Infraestructura completa</div>
+      <p class="valor-desc">Generador eléctrico propio para garantizar continuidad en todo momento.</p>
+    </div>
+    <div class="valor-card">
+      <span class="valor-icon">✂️</span>
+      <div class="valor-titulo">Servicios propios</div>
+      <p class="valor-desc">Peluquería y otros servicios de cuidado personal in situ.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="servicios" id="servicios">
+  <div class="servicios-header">
+    <p class="seccion-eyebrow">Lo que ofrecemos</p>
+    <h2 class="seccion-titulo">Servicios pensados para el bienestar integral</h2>
+  </div>
+
+  <div class="servicios-grid">
+    <div class="servicio-item">
+      <div class="servicio-icono">🩺</div>
+      <h3>Atención médica</h3>
+      <p>Supervisión médica permanente, seguimiento de medicación y coordinación con especialistas según las necesidades de cada residente.</p>
+    </div>
+    <div class="servicio-item">
+      <div class="servicio-icono">🤝</div>
+      <h3>Cuidados de enfermería</h3>
+      <p>Equipo de enfermería presente las 24 horas para asistencia, higiene y monitoreo continuo del estado de salud.</p>
+    </div>
+    <div class="servicio-item">
+      <div class="servicio-icono">🍽️</div>
+      <h3>Alimentación</h3>
+      <p>Menú elaborado con criterio nutricional, adaptado a las necesidades y preferencias de cada residente, con dietas especiales disponibles.</p>
+    </div>
+    <div class="servicio-item">
+      <div class="servicio-icono">🏊</div>
+      <h3>Pileta climatizada</h3>
+      <p>Actividades acuáticas y recreativas durante todo el año en nuestra pileta climatizada propia.</p>
+    </div>
+    <div class="servicio-item">
+      <div class="servicio-icono">🌳</div>
+      <h3>Jardín de 1.000 m²</h3>
+      <p>Amplio espacio verde para disfrutar al aire libre, realizar actividades recreativas y fomentar el contacto con la naturaleza.</p>
+    </div>
+    <div class="servicio-item">
+      <div class="servicio-icono">✂️</div>
+      <h3>Peluquería propia</h3>
+      <p>Servicio de peluquería y cuidado personal integrado en la residencia, sin necesidad de traslados externos.</p>
+    </div>
+    <div class="servicio-item">
+      <div class="servicio-icono">🎯</div>
+      <h3>Actividades recreativas</h3>
+      <p>Programa de actividades sociales, culturales y terapéuticas diseñadas para estimular y acompañar a las residentes.</p>
+    </div>
+    <div class="servicio-item">
+      <div class="servicio-icono">⚡</div>
+      <h3>Infraestructura segura</h3>
+      <p>Generador eléctrico propio para asegurar la continuidad de todos los servicios en cualquier circunstancia.</p>
+    </div>
+    <div class="servicio-item">
+      <div class="servicio-icono">👨‍👩‍👧</div>
+      <h3>Acompañamiento familiar</h3>
+      <p>Comunicación fluida y transparente con las familias, con visitas organizadas y actualizaciones sobre el estado de cada residente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DESTACADOS -->
+<section class="destacados">
+  <p class="seccion-eyebrow" style="color: var(--dorado);">Por qué eligen Casa Grande</p>
+  <h2 class="seccion-titulo">Un lugar de confianza en zona norte</h2>
+  <div class="destacados-grid">
+    <div>
+      <div class="destacado-num">2</div>
+      <div class="destacado-label">Sedes en Martínez y La Lucila</div>
+    </div>
+    <div>
+      <div class="destacado-num">24 hs</div>
+      <div class="destacado-label">Atención médica y de enfermería</div>
+    </div>
+    <div>
+      <div class="destacado-num">1.000 m²</div>
+      <div class="destacado-label">De jardín en nuestras instalaciones</div>
+    </div>
+    <div>
+      <div class="destacado-num">100%</div>
+      <div class="destacado-label">Ocupación habitual en ambas sedes</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="contacto-info">
+    <p class="seccion-eyebrow">Contacto</p>
+    <h2 class="seccion-titulo">Estamos para responder sus consultas</h2>
+    <p>Si está buscando una residencia para un familiar o quiere conocer más sobre nuestras sedes, escríbanos y le responderemos a la brevedad.</p>
+
+    <div class="contacto-datos">
+      <div class="contacto-dato">
+        <span class="contacto-dato-label">Sede Martínez</span>
+        <span class="contacto-dato-valor">Fleming 2539, Martínez</span>
+      </div>
+      <div class="contacto-dato">
+        <span class="contacto-dato-label">Sede La Lucila</span>
+        <span class="contacto-dato-valor">Acassuso 989, La Lucila</span>
+      </div>
+      <div class="contacto-dato">
+        <span class="contacto-dato-label">Atención exclusiva para</span>
+        <span class="contacto-dato-valor">Residentes mujeres</span>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <form class="contacto-form" action="mailto:info@casagrande.com" method="post" enctype="text/plain">
+      <div class="form-grupo">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Su nombre">
+      </div>
+      <div class="form-grupo">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" placeholder="su@correo.com">
+      </div>
+      <div class="form-grupo">
+        <label for="telefono">Teléfono (opcional)</label>
+        <input type="tel" id="telefono" name="telefono" placeholder="+54 11 ____-____">
+      </div>
+      <div class="form-grupo">
+        <label for="sede">Sede de interés</label>
+        <select id="sede" name="sede">
+          <option value="">Seleccionar sede...</option>
+          <option value="martinez">Sede Martínez</option>
+          <option value="lalucila">Sede La Lucila</option>
+          <option value="indiferente">Cualquiera de las dos</option>
+        </select>
+      </div>
+      <div class="form-grupo">
+        <label for="mensaje">Consulta</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Cuéntenos brevemente sobre el caso..."></textarea>
+      </div>
+      <button type="submit" class="form-btn">Enviar consulta</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Casa <span>Grande</span></div>
+  <div>Residencia Geriátrica · Zona Norte, Buenos Aires</div>
+  <div>© 2025 Casa Grande. Todos los derechos reservados.</div>
+</footer>
+
+</body>
+</html>
